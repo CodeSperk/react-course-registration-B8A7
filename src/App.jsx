@@ -3,8 +3,12 @@ import './App.css'
 import Cart from './components/cart/Cart';
 import Courses from './components/courses/Courses';
 import Header from './components/header/Header';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const totalCredit = 20;
+const exists = () => toast.info("Already Selected");
+const insufficientCredit = () => toast.warn("Insufficient Credit");
 
 function App() {
   const [bookedCourses, setBookedCourses] = useState([]);
@@ -15,17 +19,13 @@ function App() {
     const credits = bookedCourses.reduce((p,c)=>p+c.credit,0);
 
     if(isAlreadyExist){
-      return alert("Already Exist");
+      return exists();
     }else if(credits + course.credit > totalCredit){
-      return alert("insufficient credits");
+      return insufficientCredit();
     }else{
       const newMarkedCourses = [...bookedCourses, course];
       setBookedCourses(newMarkedCourses);
     }
-
-              
-    
- 
   
   }
 
@@ -41,6 +41,7 @@ function App() {
 
     
     
+      <ToastContainer />
     </div>
     )
   }

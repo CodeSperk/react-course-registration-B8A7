@@ -8,8 +8,12 @@ function App() {
   const [bookedCourses, setBookedCourses] = useState([]);
 
   const handleBookedCourses = (course) => {
-    const newMarkedCourses = [...bookedCourses, course];
-    setBookedCourses(newMarkedCourses);
+    const isAlreadyExist = bookedCourses.find(bookedCourse=> bookedCourse.id === course.id);
+
+    if(!isAlreadyExist){
+      const newMarkedCourses = [...bookedCourses, course];
+      setBookedCourses(newMarkedCourses);
+    }
   }
   return (
     <div className='max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 bg-slate-50 h-full pb-12'>

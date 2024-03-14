@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { FiDollarSign, FiBookOpen } from "react-icons/fi";
 
-const Course = ({ course }) => {
+const Course = ({ course, handleBookedCourses }) => {
   const { name, photo, description, price, credit } = course;
   return (
     <div>
@@ -29,7 +29,7 @@ const Course = ({ course }) => {
           </div>
 
           <div className="card-actions">
-            <button className="btn btn-primary w-full">Buy Now</button>
+            <button onClick={()=>handleBookedCourses(course)} className="btn btn-primary w-full">Buy Now</button>
           </div>
         </div>
       </div>
@@ -38,7 +38,8 @@ const Course = ({ course }) => {
 };
 
 Course.propTypes = {
-  course: PropTypes.array,
+  course: PropTypes.object,
+  handleBookedCourses: PropTypes.func
 };
 
 export default Course;

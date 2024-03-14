@@ -6,6 +6,8 @@ const Cart = ({bookedCourses}) => {
   let totalCreditHr = bookedCourses.reduce((p,c)=>p+c.credit,0);
   let totalPrice = bookedCourses.reduce((p,c)=>p+c.price,0);
 
+  let sl = 0;
+
  console.log(bookedCourses);
   return (
     <div className="w-full md:w-2/5 lg:w-1/4 bg-white p-6 rounded-xl">
@@ -13,7 +15,7 @@ const Cart = ({bookedCourses}) => {
       <h4>Course Name</h4>
       <ol className="my-5">
         {
-          bookedCourses.map((bookedCourse, idx) => <li key={idx}>{bookedCourse.name}</li>)
+          bookedCourses.map((bookedCourse, idx) => <li key={idx}><span>{sl+=1}</span> {bookedCourse.name}</li>)
         }
       </ol>
 

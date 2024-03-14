@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: "Inter", sans-serif;
+  color: rgba(28, 27, 27, 0.60);
+}
+h1,h2,h3,h4{
+  color:#1C1B1B;
+}
+h2{
+  font-size: 24px;
+  font-weight:700;
+}
+h4{
+  font-size:16px;
+  font-weight: 600;
+}
+
+@media screen and (min-width:768px) {
+  h2{
+    font-size: 32px;
+    font-weight:700;
+  }
+  h4{
+    font-size:18px;
+    font-weight: 600;
+  }
+}

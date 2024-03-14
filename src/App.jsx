@@ -10,20 +10,22 @@ function App() {
   const [bookedCourses, setBookedCourses] = useState([]);
 
   const handleBookedCourses = (course) => {
-    // for existed course
+    // for existed courses & insufficient credits
     const isAlreadyExist = bookedCourses.find(bookedCourse=> bookedCourse.id === course.id);
+    const credits = bookedCourses.reduce((p,c)=>p+c.credit,0);
 
-    if(!isAlreadyExist){
+    if(isAlreadyExist){
+      return alert("Already Exist");
+    }else if(credits + course.credit > totalCredit){
+      return alert("insufficient credits");
+    }else{
       const newMarkedCourses = [...bookedCourses, course];
       setBookedCourses(newMarkedCourses);
-    }else {
-      return alert("Already Exist");
     }
-      // alert if total credit > 20
-      const credits = bookedCourses.reduce((p,c)=>p+c.credit,0);
-      if(credits + course.credit > totalCredit){
-        return alert("insufficient credits");
-      }
+
+              
+    
+ 
   
   }
 
